@@ -31,8 +31,11 @@ function makeBoard() {
 
 function makeHtmlBoard() {
   // TODO: get "htmlBoard" variable from the item in HTML w/ID of "board"
-
+  const htmlBoard = document.getElementById('board');
   // TODO: add comment for this code
+
+  // Create tr for the top row of the table 
+  // and set handler
   const top = document.createElement("tr");
   top.setAttribute("id", "column-top");
   top.addEventListener("click", handleClick);
@@ -45,6 +48,8 @@ function makeHtmlBoard() {
   htmlBoard.append(top);
 
   // TODO: add comment for this code
+  // Create number of tr rows equivalent to HEIGHT 
+  // each with a number of td cells equivalent to WIDTH
   for (let y = 0; y < HEIGHT; y++) {
     const row = document.createElement("tr");
     for (let x = 0; x < WIDTH; x++) {
@@ -67,6 +72,11 @@ function findSpotForCol(x) {
 
 function placeInTable(y, x) {
   // TODO: make a div and insert into correct table cell
+  const cell = document.getElementById(`${y}-${x}`);
+  const div = document.createElement('div'); 
+  div.classList.add('piece'); 
+  div.classList.add(`player-${currPlayer}`);
+  cell.append(div);
 }
 
 /** endGame: announce game end */
