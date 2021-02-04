@@ -165,13 +165,25 @@ function checkForWin() {
 
   // TODO: read and understand this code. Add comments to help you.
 
+  // Step through each cell
   for (let y = 0; y < HEIGHT; y++) {
     for (let x = 0; x < WIDTH; x++) {
+
+      // create arrays of four cells to test for win
+
+      // current cell and the next three cels to the right
       let horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
+
+      // current cell and the three above it
       let vert = [[y, x], [y + 1, x], [y + 2, x], [y + 3, x]];
+      
+      // current cell and three diagnol to the right and up 
       let diagDR = [[y, x], [y + 1, x + 1], [y + 2, x + 2], [y + 3, x + 3]];
+
+      // current cell and three diagnol to the left and up
       let diagDL = [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];
 
+      // pass each array to _win(), if a single call returns true, return true
       if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) {
         return true;
       }
