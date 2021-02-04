@@ -13,6 +13,16 @@ let gameOver = false;
 let currPlayer = 1; // active player: 1 or 2
 let board = []; // array of rows, each row is array of cells  (board[y][x])
 
+// Reset Button 
+document.getElementById('reset').addEventListener('click', ()=>{
+  makeBoard();
+  document.getElementById('board').innerHTML = '';
+  makeHtmlBoard(); 
+  document.getElementById('playerTurn').innerText = "Player One's Turn"; 
+  gameOver = false; 
+});
+
+
 /** makeBoard: create in-JS board structure:
  *    board = array of rows, each row is array of cells  (board[y][x])
  */
