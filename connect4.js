@@ -8,6 +8,8 @@
 const WIDTH = 7;
 const HEIGHT = 6;
 
+let gameOver = false;
+
 let currPlayer = 1; // active player: 1 or 2
 let board = []; // array of rows, each row is array of cells  (board[y][x])
 
@@ -95,6 +97,9 @@ function endGame(msg) {
 /** handleClick: handle click of column top to play piece */
 
 function handleClick(evt) {
+  if(gameOver){
+    return; 
+  }
   // get x from ID of clicked cell
   const x = +evt.target.id;
 
@@ -112,17 +117,22 @@ function handleClick(evt) {
 
   // check for win
   if (checkForWin()) {
+    gameOver = true;
+    document.getElementById('playerTurn').textContent = '';
     return endGame(`Player ${currPlayer} won!`);
   }
 
   // check for tie
   // TODO: check if all cells in board are filled; if so call, call endGame
   if(board.every(b => b.every(c => c))){
-    endGame(`Tie!`);
+    gameOver = true;
+    document.getElementById('playerTurn').textContent = '';
+    return endGame(`Tie!`);
   }
   // switch players
   // TODO: switch currPlayer 1 <-> 2
   currPlayer = (currPlayer == 1) ? 2 : 1; 
+  document.getElementById('playerTurn').innerText = `Player ${(currPlayer == 1) ? 'One' : "Two"}'s Turn`;
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */

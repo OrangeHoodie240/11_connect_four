@@ -34,3 +34,8 @@
 #column-top td:hover {
   background-color: gold;
 }
+
+#playerTurn {
+  margin-top: 5%; 
+  margin-left: 5%;
+}
