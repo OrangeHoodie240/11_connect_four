@@ -94,7 +94,10 @@ function placeInTable(y, x) {
   const div = document.createElement('div'); 
   div.classList.add('piece'); 
   div.classList.add(`player-${currPlayer}`);
+    
   cell.append(div);
+  const rect = cell.getBoundingClientRect(); 
+  div.style.top += `${rect.top}px`;
 }
 
 /** endGame: announce game end */

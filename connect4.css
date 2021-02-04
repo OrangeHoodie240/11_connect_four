@@ -11,10 +11,13 @@
 .piece {
   /* TODO: make into circles */
   margin: 5px;
-  width: 80%;
-  height: 80%;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  
+  position: absolute; 
+  top: 0; 
+  transition-property: top;
+  transition-duration: 500ms;
 }
 
 /* TODO: make pieces red/blue,  depending on player 1/2 piece */
@@ -44,4 +47,4 @@
 #playerTurn {
   margin-top: 5%; 
   margin-left: 5%;
-}
+} 
